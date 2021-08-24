@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
-
-function randomInteger(min,max){
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    return Math.round(rand);
-}
+import {randomInteger} from './helpers.js';
 
 let houses = ["palace", "flat", "house", "bungalo"];
 let titles = ["Суточная оренда", "Долгосрочная оренда", "По часовая оренда"];
@@ -38,8 +33,8 @@ for (let index = 0; index < 8; index++){
     },
     
     "location": {
-        "x":  400 ,//случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка.
-        "y":  800 //случайное число, координата y метки на карте от 130 до 630.
+        "x":  randomInteger(0, 400) ,//случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка.
+        "y":  randomInteger(0, 800) //случайное число, координата y метки на карте от 130 до 630.
     }
     };
     pin.author.avatar = "img/avatars/user0"+ randomInteger(1, 8) + ".png";
@@ -52,17 +47,12 @@ for (let index = 0; index < 8; index++){
     pin.offer.checkin = check[randomInteger(0, check.length - 1)];
     pin.offer.checkout = checkOut[randomInteger(0, checkOut.length - 1)];
     pin.offer.features = featur[randomInteger(0, featur.length - 1)];
-    pin.location.x = x[randomInteger(0, x.length - 1)];
-    pin.location.y = y[randomInteger(0, y.length - 1)];
+    // pin.location.x = x[randomInteger(0, x.length - 1)];
+    // pin.location.y = y[randomInteger(0, y.length - 1)];
 
 
     mapPins.push(pin)
 }
-console.log(mapPins)
-=======
-import {data} from "./mocks.js";
-import {getPins} from "./pins.js";
+// console.log(mapPins)
 
-
-    getPins(data)
->>>>>>> Stashed changes
+export const data = mapPins;
