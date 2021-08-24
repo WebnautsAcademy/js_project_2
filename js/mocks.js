@@ -1,14 +1,9 @@
-<<<<<<< Updated upstream
-
-function randomInteger(min,max){
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    return Math.round(rand);
-}
+import {randomInteger} from './helpers.js';
 
 let houses = ["palace", "flat", "house", "bungalo"];
 let titles = ["Суточная оренда", "Долгосрочная оренда", "По часовая оренда"];
 let addresses = ["top: 450px left 850px", "top: 350px left 750px", "top: 300px left 700px", "top: 250px left 650px"]; 
-let prices = ["1100","1200","1300","1400","1500","1600","1700","1800"];
+let prices = ["1100&#x20bd;<span>/ночь</span>","1200&#x20bd;<span>/ночь</span>","1300&#x20bd;<span>/ночь</span>","1400&#x20bd;<span>/ночь</span>","1500","1600","1700","1800"];
 let roomsses = ["1","2","3","4","5","6"];
 let guestsses = ["7","8","9","10"];
 let check = ["13:00","14:00","15:00"];
@@ -38,8 +33,8 @@ for (let index = 0; index < 8; index++){
     },
     
     "location": {
-        "x":  400 ,//случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка.
-        "y":  800 //случайное число, координата y метки на карте от 130 до 630.
+        "x":  randomInteger(0, 400) ,//случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка.
+        "y":  randomInteger(0, 800) //случайное число, координата y метки на карте от 130 до 630.
     }
     };
     pin.author.avatar = "img/avatars/user0"+ randomInteger(1, 8) + ".png";
@@ -52,50 +47,12 @@ for (let index = 0; index < 8; index++){
     pin.offer.checkin = check[randomInteger(0, check.length - 1)];
     pin.offer.checkout = checkOut[randomInteger(0, checkOut.length - 1)];
     pin.offer.features = featur[randomInteger(0, featur.length - 1)];
-    pin.location.x = x[randomInteger(0, x.length - 1)];
-    pin.location.y = y[randomInteger(0, y.length - 1)];
+    // pin.location.x = x[randomInteger(0, x.length - 1)];
+    // pin.location.y = y[randomInteger(0, y.length - 1)];
 
 
     mapPins.push(pin)
 }
-console.log(mapPins)
-=======
-import {data} from "./mocks.js";
-import {getPins} from "./pins.js";
+// console.log(mapPins)
 
-
-    getPins(data)
-
-    const pins =  document.querySelectorAll(".map__pin");
-
-    pins.forEach((it, i)=>{
-        const map = document.querySelector('.map')
-        function createrCard(){
-            const markupCard = `<article class="map__card popup">
-            <img src="${data[i].author.avatar}" class="popup__avatar" width="70" height="70" alt="Аватар пользователя">
-            <button type="button" class="popup__close">Закрыть</button>
-            <h3 class="popup__title" >"${data[i].offer.title}"</h3>
-            <p class="popup__text popup__text--address">102-0082 Tōkyō-to, Chiyoda-ku, Ichibanchō, 14−3</p>
-            <p class="popup__text popup__text--price">${data[i].offer.price}</p>
-            <h4 class="popup__type">${data[i].offer.type}</h4>
-            <p class="popup__text popup__text--capacity">2 комнаты для 3 гостей</p>
-            <p class="popup__text popup__text--time">Заезд после 14:00, выезд до 10:00</p>
-            <ul class="popup__features">
-              <li class="popup__feature popup__feature--wifi"></li>
-              <li class="popup__feature popup__feature--dishwasher"></li>
-              <li class="popup__feature popup__feature--parking"></li>
-              <li class="popup__feature popup__feature--washer"></li>
-              <li class="popup__feature popup__feature--elevator"></li>
-              <li class="popup__feature popup__feature--conditioner"></li>
-            </ul>
-            <p class="popup__description">Великолепная квартира-студия в центре Токио. Подходит как туристам, так и
-              бизнесменам. Квартира полностью укомплектована и недавно отремонтирована.</p>
-          </article>`
-          map.insertAdjacentHTML('beforeend', markupCard)
-        }
-        it.addEventListener("click", createrCard)
-            
-        })
-    
-
->>>>>>> Stashed changes
+export const data = mapPins;
